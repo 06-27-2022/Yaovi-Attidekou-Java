@@ -19,9 +19,9 @@ import com.revature.util.ConnectionUtil;
 public class RevemployeeRepositoryImpl implements RevemployeeRepository{
 
 	/**
-	 * I want a method that I can use to get all of the associates' information
+	 * I want a method that I can use to get all of the revemployees' information
 	 * from the DB. I don't just want this method to print this associates; I want it
-	 * to return a List of associates to the caller.
+	 * to return a List of revemployees to the caller.
 	 */
 	public List<Revemployee> findAllRevEmployees() {
 		
@@ -32,7 +32,7 @@ public class RevemployeeRepositoryImpl implements RevemployeeRepository{
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet set = null;
-		//Declaring the list and initalizing the List we will return at the end of this method.
+		//Declaring the list and initializing the List we will return at the end of this method.
 		List<Revemployee> revemployees = new ArrayList<>();
 		
 		//Declare my SQL query string ahead of time:
@@ -72,7 +72,8 @@ public class RevemployeeRepositoryImpl implements RevemployeeRepository{
 						set.getString(3),
 						set.getInt(4),
 						set.getString(5),
-						set.getString(6));
+						set.getString(6),
+						set.getString(7));
 				
 				/*
 				 * Let's add Associate objects to our List<Associate> (list of associates)
@@ -123,7 +124,7 @@ public class RevemployeeRepositoryImpl implements RevemployeeRepository{
 		 * We will alter our SQL String to a parameterized SQL String (the
 		 * question marks being parameters).
 		 */
-		final String SQL = "insert into revemployees values(default, ?, ?, ?, ?)";
+		final String SQL = "insert into revemployees values(default, ?, ?, ?, ?,?,?)";
 		
 		try {
 			conn = ConnectionUtil.getNewConnection();
@@ -137,7 +138,7 @@ public class RevemployeeRepositoryImpl implements RevemployeeRepository{
 			stmt.setInt(3, revemployee.getManagerId());
 			stmt.setString(4, revemployee.getUserName());
 			stmt.setString(5, revemployee.getPassword());
-			
+			stmt.setString(6, revemployee.getRole());
 			stmt.execute();
 			
 		}catch(SQLException e) {
@@ -155,10 +156,10 @@ public class RevemployeeRepositoryImpl implements RevemployeeRepository{
 	}
 
 	/**
-	 * This method should update an existing associate record in the "associates"
+	 * This method should update an existing revemployee record in the "revemployees"
 	 * table.
 	 * 
-	 * @param associate an associate object containing updated state that will be written to
+	 * @param revemployee an revemployee object containing updated state that will be written to
 	 * the DB.
 	 */
 	@Override
@@ -176,7 +177,7 @@ public class RevemployeeRepositoryImpl implements RevemployeeRepository{
 			stmt = conn.prepareStatement(SQL);
 			//Setting the parameters in our parameterized query
 			stmt.setString(1, revemployee.getFirstName());
-			stmt.setInt(2, revemployee.getId());
+			stmt.setInt(2, revemployee.getRevemployeeId());
 			//Executing the query
 			stmt.execute();
 			
@@ -195,9 +196,9 @@ public class RevemployeeRepositoryImpl implements RevemployeeRepository{
 
 	/**
 	 * This method should locate just a single associate by their unique ID and return
-	 * that Associate object to the caller.
+	 * that Revemployee object to the caller.
 	 * 
-	 * @param id The associate's unique identifier in the database
+	 * @param id The revemployee's unique identifier in the database
 	 */
 	@Override
 	public Revemployee findById(int id) {
@@ -207,7 +208,7 @@ public class RevemployeeRepositoryImpl implements RevemployeeRepository{
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet set = null;
-		final String SQL = "select * from associates where id = ?";
+		final String SQL = "select * from revemployee where id = ?";
 		
 		try {
 			conn = ConnectionUtil.getNewConnection();
@@ -223,7 +224,8 @@ public class RevemployeeRepositoryImpl implements RevemployeeRepository{
 						set.getString(3),
 						set.getInt(4),
 						set.getString(5),
-						set.getString(6)
+						set.getString(6),
+						set.getString(7)
 						);
 			}
 			

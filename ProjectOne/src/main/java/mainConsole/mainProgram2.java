@@ -9,7 +9,7 @@ import com.revature.model.Ticket;
 import com.revature.repository.RevemployeeRepository;
 import com.revature.repository.RevemployeeRepositoryImpl;
 
-public class mainProgram {
+public class mainProgram2 {
 	public static void main(String[] args) {
 		RevemployeeRepository revemployeeRepository = new RevemployeeRepositoryImpl();
 		// List<Revemployee> revemployees = revemployeeRepository.findAllRevEmployees();
