@@ -1,4 +1,5 @@
 package com.revature.web;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -13,8 +14,9 @@ import com.revature.model.Revemployee;
 import com.revature.repository.RevemployeeRepository;
 import com.revature.repository.RevemployeeRepositoryImpl;
 
-public class AllUsersServlet extends HttpServlet {
-private static final long serialVersionUID = -158339544377432047L;
+public class AllRevemployeesServlet extends HttpServlet{
+
+	private static final long serialVersionUID = -158339544377432047L;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		/*
@@ -47,4 +49,5 @@ private static final long serialVersionUID = -158339544377432047L;
 		PrintWriter writer = response.getWriter();
 		writer.write(json);
 	}
+
 }
