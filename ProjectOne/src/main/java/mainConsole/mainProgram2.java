@@ -12,11 +12,9 @@ import com.revature.repository.RevemployeeRepositoryImpl;
 public class mainProgram2 {
 	public static void main(String[] args) {
 		RevemployeeRepository revemployeeRepository = new RevemployeeRepositoryImpl();
-		// List<Revemployee> revemployees = revemployeeRepository.findAllRevEmployees();
-		// System.out.println(revemployees);
 
 		Scanner scan = new Scanner(System.in);
-		List<Revemployee> employeesList = new ArrayList<Revemployee>();
+		List<Revemployee> employeesList = revemployeeRepository.findAllRevEmployees();
 		Revemployee employee = new Revemployee(1, "Yaovi", "Attidekou", 2, "Fofo", "123", "associate");
 		Revemployee manager = new Revemployee(3, "Thomas", "SENOIR", 6, "Thomass", "senior", "manager");
 		Revemployee loggedInEmployee = null;
@@ -52,13 +50,17 @@ public class mainProgram2 {
 		
 		List<Ticket> tickets = new ArrayList<Ticket>(); 
 		if(loggedInEmployee.getRole().equals("associate")) {
-			 System.out.print("Amount: ");
+			 
+			System.out.print("Amount: ");
 			 int amount = Integer.parseInt(scan.nextLine());
+			 
+			 System.out.print("RevemployeeId: ");
+			 int revemployeeId = Integer.parseInt(scan.nextLine());
 			 
 			 System.out.print("Description: ");
 			 String description = scan.nextLine();
 			 
-			 Ticket ticket = new Ticket(amount, description, "Pending"); 
+			 Ticket ticket = new Ticket(1, "Pending",amount,revemployeeId, description); 
 			 tickets.add(ticket);
 			 System.out.println(tickets);
 			 
@@ -67,31 +69,38 @@ public class mainProgram2 {
 		
 		System.out.print("Change ticket status to: ");
 		String status = scan.nextLine();
-		
+		for (int i = 0; i < tickets.size(); i++) {
 		if (loggedInEmployee.getRole().equals("manager")) {
 			if (status.equals("deny")) {
+		    
 
-				if (tickets.get(0).getStatus().equals("Approved") || tickets.get(0).getStatus().equals("Denied")) {
+				if (tickets.get(i).getStatus().equals("Approved") || tickets.get(i).getStatus().equals("Denied")) {
 					System.out.println("Your ticket is already processed");
 				} else {
 					System.out.println("Your ticket is denied");
-					tickets.get(0).setStatus("Denied");
-				}
-			} else if (status.equals("approve")) {
-				if (tickets.get(0).getStatus().equals("Approved") || tickets.get(0).getStatus().equals("Denied")) {
+					tickets.get(i).setStatus("Denied");
+				 
+				} if (status.equals("approve")){
+				if (tickets.get(i).getStatus().equals("Approved") || tickets.get(i).getStatus().equals("Denied")) {
 					System.out.println("Your ticket is already processed");
-				} else if (tickets.get(0).getStatus().equals("Pending")) {
-					tickets.get(0).setStatus("Approved");
+				} else if (tickets.get(i).getStatus().equals("Pending")) {
+					tickets.get(i).setStatus("Approved");
 					System.out.println("Your ticket is approved");
-					System.out.println(tickets.get(0).getStatus());
+					System.out.println(tickets.get(i).getStatus());
 				}
-			}
+			
 		
-		}else {
+		else {
 			System.out.println("You are not a manager");
 		}
+				
+		}
+
+
+    }
 		
-
 	}
-
+    }
+		
+}
 }

@@ -3,41 +3,71 @@ package com.revature.model;
 import java.util.Objects;
 
 public class Ticket {
-    private int amount;
-    private String description;
+	private  int ticketId;
 	private String status;
-	public Ticket() {
+    private int amount;
+    private int revemployeeId;
+    private String description;
+	
+    public Ticket() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Ticket(int amount, String description, String status) {
+
+	public Ticket(int ticketId, String status, int amount, int revemployeeId, String description) {
 		super();
-		this.amount = amount;
-		this.description = description;
+		this.ticketId = ticketId;
 		this.status = status;
-	}
-	public int getAmount() {
-		return amount;
-	}
-	public void setAmount(int amount) {
 		this.amount = amount;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public void setDescription(String description) {
+		this.revemployeeId = revemployeeId;
 		this.description = description;
 	}
+
+	public int getTicketId() {
+		return ticketId;
+	}
+
+	public void setTicketId(int ticketId) {
+		this.ticketId = ticketId;
+	}
+
 	public String getStatus() {
 		return status;
 	}
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+
+	public int getRevemployeeId() {
+		return revemployeeId;
+	}
+
+	public void setRevemployeeId(int revemployeeId) {
+		this.revemployeeId = revemployeeId;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(amount, description, status);
+		return Objects.hash(amount, description, revemployeeId, status, ticketId);
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -48,12 +78,17 @@ public class Ticket {
 			return false;
 		Ticket other = (Ticket) obj;
 		return amount == other.amount && Objects.equals(description, other.description)
-				&& Objects.equals(status, other.status);
+				&& revemployeeId == other.revemployeeId && Objects.equals(status, other.status)
+				&& ticketId == other.ticketId;
 	}
+
 	@Override
 	public String toString() {
-		return "Ticket [amount=" + amount + ", description=" + description + ", status=" + status + "]";
+		return "Ticket [ticketId=" + ticketId + ", status=" + status + ", amount=" + amount + ", revemployeeId="
+				+ revemployeeId + ", description=" + description + "]";
 	}
-   
+	
+    
+    
     
 }
