@@ -20,16 +20,16 @@ public class AllRevemployeesServlet extends HttpServlet{
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		/*
-		 * We know that we want our /associates/all endpoint to return all of the associates'
+		 * We know that we want our /revemployees/all endpoint to return all of the associates'
 		 * information to the client as JSON.
 		 * 
 		 * This requires that we:
 		 * 
 		 * 1) Get all of the associates' information from the DB. This requires that
 		 * we make an instance of the AssociateRepositoryImpl class and call the
-		 * findAllAssociates method.
+		 * findAllRevemployees method.
 		 * 
-		 * 2) Transform our Java object (a list of Associates) into a JSON string.
+		 * 2) Transform our Java object (a list of revemployees) into a JSON string.
 		 * We will need our Jackson ObjectMapper.
 		 * 
 		 * 3) Now that we converted this into object into a JSON string, we can write

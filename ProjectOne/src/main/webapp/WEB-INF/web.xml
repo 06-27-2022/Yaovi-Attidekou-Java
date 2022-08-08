@@ -12,12 +12,50 @@
 		<welcome-file>default.htm</welcome-file>
 		<welcome-file>default.jsp</welcome-file>
 	</welcome-file-list>
+	<servlet-mapping>
+		<servlet-name>AllRevemployeesServlet</servlet-name>
+		<url-pattern>/employees</url-pattern>
+	</servlet-mapping>
 	<servlet>
 		<servlet-name>AllRevemployeesServlet</servlet-name>
 		<servlet-class>com.revature.web.AllRevemployeesServlet</servlet-class>
 	</servlet>
+	
+	
 	<servlet-mapping>
-		<servlet-name>AllRevemployeesServlet</servlet-name>
-		<url-pattern>/revemployees/all</url-pattern>
+		<servlet-name>AllTicketsServlet</servlet-name>
+		<url-pattern>/tickets</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>AllTicketsServlet</servlet-name>
+		<servlet-class>com.revature.web.AllTicketsServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>RevemployeePostServlet</servlet-name>
+		<url-pattern>/revemployeePost</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>RevemployeePostServlet</servlet-name>
+		<servlet-class>com.revature.web.RevemployeePostServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>RequestParametersServlet</servlet-name>
+		<url-pattern>/parameters</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>RequestParametersServlet</servlet-name>
+		<servlet-class>com.revature.web.RequestParametersServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DispatcherServlet</servlet-name>
+		<url-pattern>/api/*</url-pattern>
+	</servlet-mapping>
+	<servlet>
+	<servlet-name>DispatcherServlet</servlet-name>
+	<servlet-class>com.revature.web.DispatcherServlet</servlet-class>
+	</servlet>
+	
 </web-app>

@@ -13,10 +13,10 @@ public class RequestParametersServlet extends HttpServlet{
 	private static final long serialVersionUID = -6854657543069316481L;
 	
 	/*
-	 * This servlet will handle/accept GET requests. That said, we'll override doGet.
+	 * This  will handle/accept GET requests. That said, we'll override doGet.
 	 * 
-	 * MODIFICATION: This servlet now only accepts POST requests as if you are sending
-	 * sensitive data (e.g. passwords and usernames), you should NOT use a GET request
+	 * MODIFICATION: This  now only accepts POST requests as if you are sending
+	 * sensitive data (e.g. passwords and userNames), you should NOT use a GET request
 	 * as it exposes the credentials via the URL.
 	 */
 	
@@ -45,7 +45,7 @@ public class RequestParametersServlet extends HttpServlet{
 		 * that allows you to extract specific parameters from the query string.
 		 */
 		
-		System.out.println(request.getParameter("username"));
+		System.out.println(request.getParameter("userName"));
 		System.out.println(request.getParameter("password"));
 	}
 
