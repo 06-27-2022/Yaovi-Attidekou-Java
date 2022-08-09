@@ -14,7 +14,7 @@ import com.revature.repository.RevemployeeRepository;
 import com.revature.repository.RevemployeeRepositoryImpl;
 
 public class RequestHelper {
-	
+	private static RevemployeeController revemployeeController = new RevemployeeController();
 	public static Object processGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 		String resource = request.getRequestURI();
 		System.out.println(resource);
@@ -23,13 +23,13 @@ public class RequestHelper {
 		String isolatedResource= resource.replace("/ProjectOne/api", "");
 		System.out.println(isolatedResource);
 		
-		ObjectMapper imTheMap = new ObjectMapper();
+		
 		
 		switch(isolatedResource) {
 		case "/employees":
 			
 			response.setContentType("application/json");
-		    return imTheMap.writeValueAsString(RevemployeeController.findAll(request, response));
+		    return revemployeeController.findAll(request, response);
 			
 			
 			
@@ -44,7 +44,7 @@ public class RequestHelper {
 		String resource = request.getRequestURI().replace("/ProjectOne/api", "");
 		
 		switch(resource) {
-		case "revemployee":
+		case "/employee":
 			RevemployeeController.save(request, response);
 			break;
 		default:

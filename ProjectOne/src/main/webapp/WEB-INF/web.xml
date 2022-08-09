@@ -57,5 +57,12 @@
 	<servlet-name>DispatcherServlet</servlet-name>
 	<servlet-class>com.revature.web.DispatcherServlet</servlet-class>
 	</servlet>
-	
+	 <servlet-mapping>
+		<servlet-name>Cookies</servlet-name>
+		<url-pattern>/cookies</url-pattern>
+	</servlet-mapping>
+	<servlet>
+	<servlet-name>Cookies</servlet-name>
+	<servlet-class>com.revature.web.Cookies</servlet-class>
+	</servlet>
 </web-app>
